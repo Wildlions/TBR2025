@@ -1,0 +1,125 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+from umath import sin, cos, tan, pi
+
+tempo = StopWatch()   
+hub = PrimeHub()
+direito = Motor(Port.C)
+esquerdo = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+garra_esq = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+garra_dir = Motor(Port.D)
+mover = DriveBase(esquerdo, direito, 55, 80)
+mover.use_gyro(True)
+numero = 1
+lancamento = 1
+hub.system.set_stop_button(Button.BLUETOOTH)
+
+def andar(distancia, velocidade = 400):
+    mover.settings(velocidade, 900, 900, 900)
+    mover.straight(distancia*10)
+
+def curva(graus, velocidade = 200):
+    mover.settings(50, 600, 130, velocidade)
+    mover.turn(graus)
+    
+def garraD(velocidade, tempo):
+    garra_dir.run_time(velocidade, tempo)
+
+def garraE(velocidade, tempo):
+    garra_esq.run_time(velocidade, tempo)
+
+def arco(raio, graus, velocidade = 300):
+
+    mover.settings(velocidade, 400, 400, 400)
+    mover.curve(raio, graus)
+    
+    
+def esperar(tempo):
+    mover.stop()
+    wait(tempo*1000)
+    mover.stop()
+
+while numero == 1:
+
+    hub.display.number(lancamento)
+    botao = hub.buttons.pressed()
+    
+    if Button.LEFT in botao: 
+
+        if lancamento == 0:
+
+            lancamamento = 0
+            hub.display.number(lancamento)
+
+        else:
+
+            lancamento -= 1
+            hub.display.number(lancamento)
+            wait(250)
+    
+    if Button.RIGHT in botao:
+
+        if lancamento == 99:
+
+            lancamento = 99
+
+        else:
+
+            lancamento += 1
+            hub.display.number(lancamento)
+            wait(250)
+
+    if Button.CENTER in botao:
+        
+        wait(300)
+
+        if lancamento == 0:
+
+            mover.drive(1000, 0)
+
+        if lancamento == 1:
+
+            andar(60)
+            arco(150, -55)
+            andar(8)
+            arco(-110, -45)
+            andar(-9)
+            arco(-50, 70)
+            andar(-8, 300)
+            andar(8, 100)
+            mover.stop()
+
+        if lancamento == 2:
+            
+            andar(64.3)
+            arco(150, -45)
+            andar(2) # fez o tubarão 
+            andar(-3)
+            arco(-190, 50)
+            andar(-4)
+            andar(12, 80)
+            andar(-3.5)
+            curva(-90)
+            andar(-38)
+            andar(11)
+            curva(-78)
+            andar(-10)
+            garraE(-4000, 1300)
+            andar(-5)
+            garraE(4000, 1500)
+            andar(9)
+            curva(120)
+            garraD(-4000, 1100)
+            garraD(4000, 679)
+            andar(7)
+            garraD(4000, 800)
+            
+            andar(-10)
+            
+
+            
+            
+            mover.stop()
