@@ -3,14 +3,23 @@ from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSenso
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
 from umath import sin, cos, tan, pi
 
 tempo = StopWatch()   
 hub = PrimeHub()
-direito = Motor(Port.C)
-esquerdo = Motor(Port.A, Direction.COUNTERCLOCKWISE)
-garra_esq = Motor(Port.F, Direction.COUNTERCLOCKWISE)
-garra_dir = Motor(Port.D)
+direito = Motor(Port.D)
+esquerdo = Motor(Port.B, Direction.COUNTERCLOCKWISE)
+garra_esq = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+garra_dir = Motor(Port.E)
 mover = DriveBase(esquerdo, direito, 55, 80)
 mover.use_gyro(True)
 numero = 1
@@ -82,44 +91,10 @@ while numero == 1:
 
         if lancamento == 1:
 
-            andar(60)
-            arco(150, -55)
-            andar(8)
-            arco(-110, -45)
-            andar(-9)
-            arco(-50, 70)
-            andar(-8, 300)
-            andar(8, 100)
-            mover.stop()
-
-        if lancamento == 2:
-            
-            andar(64.3)
-            arco(150, -45)
-            andar(2) # fez o tubarão 
-            andar(-3)
-            arco(-190, 50)
-            andar(-4)
-            andar(12, 80)
-            andar(-3.5)
-            curva(-90)
-            andar(-38)
-            andar(11)
-            curva(-78)
-            andar(-10)
-            garraE(-4000, 1300)
-            andar(-5)
-            garraE(4000, 1500)
-            andar(9)
-            curva(120)
-            garraD(-4000, 1100)
-            garraD(4000, 679)
-            andar(7)
-            garraD(4000, 800)
-            
-            andar(-10)
-            
-
-            
+            garraE(4000, 435)
+            curva(30)
+            andar(28)
+            arco(60, 55)
+            garraE(4000, 600)
             
             mover.stop()
