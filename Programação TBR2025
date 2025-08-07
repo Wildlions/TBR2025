@@ -3,15 +3,6 @@ from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSenso
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
-
-hub = PrimeHub()
-
-
-from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
-from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
 from umath import sin, cos, tan, pi
 
 tempo = StopWatch()   
@@ -20,11 +11,17 @@ direito = Motor(Port.D)
 esquerdo = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 garra_esq = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 garra_dir = Motor(Port.E)
+sensoresq = ColorSensor(Port.A)
+sensordir = ColorSensor(Port.F)
 mover = DriveBase(esquerdo, direito, 55, 80)
 mover.use_gyro(True)
 numero = 1
 lancamento = 1
 hub.system.set_stop_button(Button.BLUETOOTH)
+
+def lerE():
+    
+    return(sensoresq.color())
 
 def andar(distancia, velocidade = 400):
     mover.settings(velocidade, 900, 900, 900)
@@ -50,6 +47,12 @@ def esperar(tempo):
     mover.stop()
     wait(tempo*1000)
     mover.stop()
+
+def estacionarB(velocidade):
+
+    loop = 1
+    while True:
+        wait(1)
 
 while numero == 1:
 
@@ -90,11 +93,18 @@ while numero == 1:
             mover.drive(1000, 0)
 
         if lancamento == 1:
-
-            garraE(4000, 435)
-            curva(30)
+            """
+            garraE(4000, 440)
+            curva(31)
             andar(28)
-            arco(60, 55)
+            arco(60, 40)
             garraE(4000, 600)
-            
+            arco(500, 18)
+            andar(86.3)
+            curva(35)
+            garraE(-4000, 610)
+            andar(-13)
             mover.stop()
+            """
+            
+# Remover os """ depois
