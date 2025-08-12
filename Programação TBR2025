@@ -18,10 +18,18 @@ mover.use_gyro(True)
 numero = 1
 lancamento = 1
 hub.system.set_stop_button(Button.BLUETOOTH)
+sensoresq.lights.on(100)
+sensordir.lights.on(100)
+whiteLow = 85
+whiteHigh = 100
 
 def lerE():
     
-    return(sensoresq.color())
+    return(sensoresq.reflection())
+
+def lerD():
+
+    return(sensordir.reflection())
 
 def andar(distancia, velocidade = 400):
     mover.settings(velocidade, 900, 900, 900)
@@ -50,9 +58,26 @@ def esperar(tempo):
 
 def estacionarB(velocidade):
 
-    loop = 1
-    while True:
-        wait(1)
+    loop = True
+
+    while loop == True:
+
+        refE = lerE()
+        refD = lerD()
+        mover.drive(velocidade, 0)
+
+        if refD >= whiteLow and refD <= whiteHigh:
+
+            mover.stop()
+            wait(1)
+            loop = False
+
+        if refE >= whiteLow and refE <= whiteHigh:
+
+            mover.stop()
+            wait(1)
+            loop = False
+
 
 while numero == 1:
 
@@ -93,18 +118,26 @@ while numero == 1:
             mover.drive(1000, 0)
 
         if lancamento == 1:
-            """
+            
             garraE(4000, 440)
-            curva(31)
+            curva(34)
             andar(28)
             arco(60, 40)
             garraE(4000, 600)
-            arco(500, 18)
-            andar(86.3)
+            arco(470, 18)
+            andar(50)
+            estacionarB(250)
+            andar(-17)
             curva(35)
             garraE(-4000, 610)
-            andar(-13)
+            andar(-10)
+            garraE(-6000, 600)
+            garraE(4000, 800)
+            garraD(4000, 1000)
+            curva(80)
+            andar(5)
+            garraE(-4000, 850)
+            andar(-10)
+            garraD(-4000, 800)
             mover.stop()
-            """
             
-# Remover os """ depois
