@@ -119,14 +119,15 @@ while numero == 1:
 
         if lancamento == 1:
             
-            garraE(4000, 440)
-            curva(34)
-            andar(28)
+            garraE(4000, 415)
+            curva(33)
+            andar(28.5)
             arco(60, 40)
             garraE(4000, 600)
-            arco(470, 18)
+            arco(700, 15)
+            curva(3)
             andar(50)
-            estacionarB(250)
+            estacionarB(400)
             andar(-17)
             curva(35)
             garraE(-4000, 610)
@@ -138,6 +139,9 @@ while numero == 1:
             andar(5)
             garraE(-4000, 850)
             andar(-10)
-            garraD(-4000, 800)
+            garraD(-4000, 900)
+            curva(150)
+            andar(-15)
+            curva(45)
+            andar(15)
             mover.stop()
-            
