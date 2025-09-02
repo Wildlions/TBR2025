@@ -20,7 +20,7 @@ lancamento = 1
 hub.system.set_stop_button(Button.BLUETOOTH)
 sensoresq.lights.on(100)
 sensordir.lights.on(100)
-whiteLow = 90
+whiteLow = 95
 whiteHigh = 100
 
 def lerE():
@@ -114,14 +114,15 @@ while numero == 1:
         wait(300)
 
         if lancamento == 0:
-
+            
+            print("Bateria: ", hub.battery.voltage())
             mover.drive(1000, 0)
 
         if lancamento == 1:
             
-            garraE(4000, 415)
+            garraE(4000, 440)
             curva(32)
-            andar(28.5)
+            andar(29)
             arco(60, 30)
             garraE(4000, 600)
             arco(1000, 18)
@@ -129,19 +130,21 @@ while numero == 1:
             andar(50)
             estacionarB(400)
             andar(-10)
-            curva(10)
+            curva(20)
             garraE(-4000, 610)
-            andar(-10)
+            andar(-15)
             garraE(-6000, 600)
             garraE(4000, 800)
             garraD(4000, 1000)
-            curva(105)
-            andar(-4)
-            garraE(-4000, 850)
-            andar(-13)
-            garraD(-4000, 850)
+            curva(95)
+            andar(3)
+            garraE(-4000, 1000)
+            andar(-10)
+            andar(4)
+            garraE(4000, 150)
             curva(110)
-            andar(-15)
+            andar(-13)
             curva(45)
-            andar(8)
+            andar(3)
+            curva(50)
             mover.stop()
