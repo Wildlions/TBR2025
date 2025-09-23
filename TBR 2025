@@ -39,10 +39,10 @@ def lerD():
 
     return(sensordir.reflection())
 
-def andar(distancia, velocidade = 400):
+def andar(distancia, velocidade = 400, aceleração = 900):
     mover.settings(velocidade, 900, 900, 900)
     mover.straight(distancia*10)
-
+    
 def curva(graus, velocidade = 200):
     mover.settings(50, 600, 130, velocidade)
     mover.turn(graus)
@@ -128,6 +128,7 @@ while numero == 1:
 
         if lancamento == 1:
            #missão 1]
+            '''
             garraE(3985, 275)
             curva(18)
             andar(32)
@@ -144,19 +145,29 @@ while numero == 1:
             andar(-10)
             garraE(4000, 850)
             andar(9)
-            curva(180)
+            curva(-180)
             garraE(-4000, 985)
             garraD(3985, 500)
             andar(-8)
             curva(16)
+            '''
+            #missão 3
             curva(-105)
-            andar(10)
-            curva(-58)
-            andar(12)
-            garraE(3985, 700)
-            garraD(3985, -800)
-            arco(195, -69)
+            andar(9)
+            curva(-65)
+            andar(25)
+            curva(76)
+            garraE(3985, 670)
+            garraD(-3985, 800)
+            andar(-19)
+            curva(-83)
+            garraE(-3985, 458)
+            andar(16)
+            andar(-14)
+            curva(-60)
+            garraE(-3985, 800)
+            andar(22)
+            curva(50)
+            garraE(3985, 900)
 
-            mover.stop()
-            
- 
+            mover.stop()  
