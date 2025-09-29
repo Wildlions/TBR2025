@@ -127,13 +127,13 @@ while numero == 1:
             mover.drive(1000, 0)
 
         if lancamento == 1:
-           #missão 1]
-            '''
-            garraE(3985, 275)
+           #missão 1
+
+            garraE(3985, 285)
             curva(18)
             andar(32)
             arco(70, 69)
-            garraE(3985, 440)
+            garraE(3985, 840)
             andar(50)
             curva(5)
             estacionarB(400)
@@ -141,16 +141,16 @@ while numero == 1:
             curva(-18)
             andar(-15)
             garraD(-3985,580 )
-            garraE(-4000, 635)
+            garraE(-4000, 935)
             andar(-10)
             garraE(4000, 850)
             andar(9)
-            curva(-180)
+            curva(180)
             garraE(-4000, 985)
             garraD(3985, 500)
             andar(-8)
             curva(16)
-            '''
+
             #missão 3
             curva(-105)
             andar(9)
