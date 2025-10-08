@@ -3,6 +3,14 @@ from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSenso
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
 from umath import sin, cos, tan, pi
 
 tempo = StopWatch()   
@@ -31,10 +39,10 @@ def lerD():
 
     return(sensordir.reflection())
 
-def andar(distancia, velocidade = 400):
+def andar(distancia, velocidade = 400, aceleração = 900):
     mover.settings(velocidade, 900, 900, 900)
     mover.straight(distancia*10)
-
+    
 def curva(graus, velocidade = 200):
     mover.settings(50, 600, 130, velocidade)
     mover.turn(graus)
@@ -119,32 +127,54 @@ while numero == 1:
             mover.drive(1000, 0)
 
         if lancamento == 1:
-            
-            garraE(4000, 440)
-            curva(32)
-            andar(29)
-            arco(60, 30)
-            garraE(4000, 600)
-            arco(1000, 18)
-            curva(13)
+           #missão 1
+
+            garraE(-3985, 1022)
+            curva(18)
+            andar(32)
+            arco(70, 69)
+            garraE(3985, 640)
             andar(50)
+            curva(5)
             estacionarB(400)
-            andar(-10)
-            curva(20)
-            garraE(-4000, 610)
-            andar(-15)
-            garraE(-6000, 600)
-            garraE(4000, 800)
-            garraD(4000, 1000)
-            curva(95)
-            andar(3)
-            garraE(-4000, 1000)
-            andar(-10)
-            andar(4)
-            garraE(4000, 150)
-            curva(110)
+            #missão 2
+            curva(-20)
+            andar(-18)
+            garraD(-3985,580 )
+            garraE(-3975, 840)
+            curva(-5)
+            andar(-3)
+            garraE(4000, 950)
+            andar(5)
+            curva(180)
+            andar(-3)
+            garraE(-4000, 985)
+            garraD(3985, 500)
             andar(-13)
-            curva(45)
-            andar(3)
-            curva(50)
-            mover.stop()
+
+            #missão 3
+            '''curva(-84)
+            andar(12)
+            curva(-74)
+            andar(22)
+            curva(81)'''
+            garraE(3985, 770)
+            garraD(-3985, 800)
+            arco(30, -70, 340)
+            garraE(-3985, 579)
+            andar(15)
+            andar(-14)
+            curva(-80)
+            garraE(-3985, 800)
+            andar(11)
+            curva(-38)
+            arco(25, -34, 340)
+
+            '''
+            andar(31.3)
+            curva(60.5)
+            andar(-4)
+            garraE(3985, 900)
+            andar(-8)'''
+
+            mover.stop()  
