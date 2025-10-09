@@ -150,7 +150,7 @@ while numero == 1:
             andar(-3)
             garraE(-4000, 985)
             garraD(3985, 500)
-            andar(-13)
+            andar(-12)
 
             #missão 3
             '''curva(-84)
@@ -159,16 +159,18 @@ while numero == 1:
             andar(22)
             curva(81)'''
             garraE(3985, 770)
-            garraD(-3985, 800)
-            arco(30, -70, 340)
-            garraE(-3985, 579)
-            andar(15)
-            andar(-14)
-            curva(-80)
-            garraE(-3985, 800)
+            garraD(-3985, 760)
+            curva(-65)
+            arco(138, -142, 420)
+            garraE(-3975, 510)
+            curva(-56)
+            andar(17)
+            curva(107)
             andar(11)
-            curva(-38)
-            arco(25, -34, 340)
+            andar(-8)
+            curva(-124)
+            andar(7)
+            arco(540, -204, 385)
 
             '''
             andar(31.3)
