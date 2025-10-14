@@ -2,7 +2,7 @@ from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
+from pybricks.tools import wait, StopWatch, multitask, run_task
 
 hub = PrimeHub()
 
@@ -30,6 +30,8 @@ sensoresq.lights.on(100)
 sensordir.lights.on(100)
 whiteLow = 95
 whiteHigh = 100
+blacklow = 12
+blackhigh = 17
 
 def lerE():
     
@@ -86,6 +88,24 @@ def estacionarB(velocidade):
             wait(1)
             loop = False
 
+def estacionarP(velocidade):
+
+    loop = True
+
+    while loop == True:
+
+        refE = lerE()
+        refD = lerD()
+        mover.drive(velocidade, 0)
+
+        if refD >= blacklow and refD <= blackhigh and refE >= blacklow and refE <= blackhigh:
+
+            mover.stop()
+            loop = False
+
+        else:
+
+            wait(1)
 
 while numero == 1:
 
@@ -162,24 +182,24 @@ while numero == 1:
             garraD(-3985, 760)
             curva(-65)
             arco(138, -142, 420)
-            garraE(-3975, 511)
+            garraE(-3975, 524)
             curva(-56)
             andar(16)
             curva(106)
             andar(13)
             wait(450)
-            andar(-8)
+            andar(-11)
             curva(-116)
-            andar(9)
+            andar(3)
             curva(15)
-            arco(277, -150, 355)
-            andar(27)
+            arco(273, -180, 355)
+            andar(10)
             garraE(3985, 500)
-            curva(68)
-            andar(85)
-            curva(84)
-            andar(16)
-            garraD(3985, 800)
+            curva(96)
+            estacionarP(400)
+            curva(90)
+            andar(37)
+            garraD(3985, 1000)
 
             '''
             andar(31.3)
@@ -188,4 +208,5 @@ while numero == 1:
             garraE(3985, 900)
             andar(-8)'''
 
-            mover.stop()  
+            mover.stop() 
+
