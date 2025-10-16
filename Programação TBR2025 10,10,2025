@@ -2,14 +2,6 @@ from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch, multitask, run_task
-
-hub = PrimeHub()
-
-from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
-from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
 from umath import sin, cos, tan, pi
 
@@ -30,8 +22,8 @@ sensoresq.lights.on(100)
 sensordir.lights.on(100)
 whiteLow = 95
 whiteHigh = 100
-blacklow = 12
-blackhigh = 17
+blacklow = 10
+blackhigh = 20
 
 def lerE():
     
@@ -65,6 +57,17 @@ def esperar(tempo):
     mover.stop()
     wait(tempo*1000)
     mover.stop()
+
+def ajusteGarra(lado, velocidade=4000, torque=50):
+
+    if lado == "E":
+
+        garra_esq.run_until_stalled(velocidade * -1, Stop.COAST, torque)
+
+    if lado == "D":
+
+        garra_dir.run_until_stalled(velocidade * -1, Stop.COAST, torque)
+
 
 def estacionarB(velocidade):
 
@@ -149,7 +152,8 @@ while numero == 1:
         if lancamento == 1:
            #missão 1
 
-            garraE(-3985, 1022)
+            ajusteGarra("E", -4000, 30)
+            garraE(-3985, 1060)
             curva(18)
             andar(32)
             arco(70, 69)
@@ -173,11 +177,7 @@ while numero == 1:
             andar(-12)
 
             #missão 3
-            '''curva(-84)
-            andar(12)
-            curva(-74)
-            andar(22)
-            curva(81)'''
+            
             garraE(3985, 770)
             garraD(-3985, 760)
             curva(-65)
@@ -189,17 +189,21 @@ while numero == 1:
             andar(13)
             wait(450)
             andar(-11)
+            garraE(-4000, 200)
+            andar(12)
+            esperar(0.35)
+            andar(-11)
             curva(-116)
             andar(3)
             curva(15)
             arco(273, -180, 355)
-            andar(10)
-            garraE(3985, 500)
-            curva(96)
+            andar(7)
+            ajusteGarra("E", 4000, 40)
+            curva(94)
             estacionarP(400)
-            curva(90)
-            andar(37)
-            garraD(3985, 1000)
+            curva(87)
+            andar(40)
+            garraD(3985, 800)
 
             '''
             andar(31.3)
