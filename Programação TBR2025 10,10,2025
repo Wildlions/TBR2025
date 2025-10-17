@@ -152,8 +152,8 @@ while numero == 1:
         if lancamento == 1:
            #missão 1
 
-            ajusteGarra("E", -4000, 30)
-            garraE(-3985, 1060)
+            ajusteGarra("E", -4000, 33)
+            garraE(-3985, 1085)
             curva(18)
             andar(32)
             arco(70, 69)
@@ -182,7 +182,7 @@ while numero == 1:
             garraD(-3985, 760)
             curva(-65)
             arco(138, -142, 420)
-            garraE(-3975, 524)
+            garraE(-3975, 523)
             curva(-56)
             andar(16)
             curva(106)
@@ -197,11 +197,13 @@ while numero == 1:
             andar(3)
             curva(15)
             arco(273, -180, 355)
-            andar(7)
-            ajusteGarra("E", 4000, 40)
-            curva(94)
-            estacionarP(400)
-            curva(87)
+            andar(5)
+            ajusteGarra("E", 4000, 33)
+            curva(102)
+            andar(36)
+            curva(-4)
+            estacionarP(280)
+            curva(93)
             andar(40)
             garraD(3985, 800)
 
@@ -212,5 +214,4 @@ while numero == 1:
             garraE(3985, 900)
             andar(-8)'''
 
-            mover.stop() 
-
+            mover.stop()
