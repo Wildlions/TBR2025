@@ -2,7 +2,7 @@ from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
+from pybricks.tools import wait, StopWatch, multitask, run_task
 from umath import sin, cos, tan, pi
 
 tempo = StopWatch()   
@@ -110,6 +110,30 @@ def estacionarP(velocidade):
 
             wait(1)
 
+async def ajusteE(velocidade, torque=50):
+
+    ajusteGarra("E", velocidade, torque)
+
+async def ajusteD(velocidade, torque=50):
+
+    ajusteGarra("D", velocidade, torque)
+
+async def ajustegarrax(velocidade, torque):
+    
+    await multitask(ajusteE(velocidade, torque), ajusteD(velocidade, torque))
+
+def ajusteGarraXX(velocidade, torque):
+
+    run_task(ajustegarrax(velocidade, torque))
+
+async def movegarraE(velocidade, tempo):
+
+    garraE(velocidade, tempo)
+
+def moveGarraXX(velocidade, tempo):
+    garra_esq.run_time(velocidade, tempo, wait=False)
+    garra_dir.run_time(velocidade, tempo, wait=True)
+
 while numero == 1:
 
     hub.display.number(lancamento)
@@ -119,7 +143,7 @@ while numero == 1:
 
         if lancamento == 0:
 
-            lancamamento = 0
+            lancamento = 0
             hub.display.number(lancamento)
 
         else:
@@ -148,11 +172,34 @@ while numero == 1:
             
             print("Bateria: ", hub.battery.voltage())
             mover.drive(1000, 0)
-
+            
         if lancamento == 1:
-           #missão 1
+        # missão 1
+
+            ajusteGarraXX(-3985, 33)
+            andar(27)
+            estacionarP(3985)
+            andar(55)
+            curva(84)
+            andar(4)
+            moveGarraXX(-3985, 1270)
+            andar(-16)
+            curva(91)
+            andar(76)
+
+        if lancamento == 2:
+            ajusteGarraXX(-4305, 33)
+            curva(24)
+            andar(37)
+            moveGarraXX(-3985, 1270)
+            curva(190)
+            andar(27)
+
+        if lancamento == 3:
+
+
+
             """
-            ajusteGarra("E", -4000, 32)
             garraE(-3985, 1090)
             curva(18)
             andar(32)
@@ -213,17 +260,16 @@ while numero == 1:
             curva(84)
             andar(40)
             garraD(3985, 800)
-            """
+            
             estacionarB(-200)
             andar(23)
             curva(-78)
             andar(-70)
 
-            '''
+            
             andar(31.3)
             curva(60.5)
             andar(-4)
             garraE(3985, 900)
-            andar(-8)'''
-
-            mover.stop()
+            andar(-8)
+            """
